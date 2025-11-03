@@ -1,13 +1,12 @@
-import { useRef, useState } from 'react';
-import HeroSection from './components/HeroSection';
-import ServicesSection from './components/ServicesSection';
-import PortfolioSection from './components/PortfolioSection';
-import QuoteContactSection from './components/QuoteContactSection';
+import { useState } from 'react';
 import { Globe2 } from 'lucide-react';
+import HeroSection from './components/HeroSection';
+import ClientsSection from './components/ClientsSection';
+import PortfolioSection from './components/PortfolioSection';
+import BlogSection from './components/BlogSection';
 
 function App() {
   const [lang, setLang] = useState('en');
-  const quoteRef = useRef(null);
 
   const scrollToQuote = () => {
     const el = document.getElementById('quote');
@@ -28,10 +27,8 @@ function App() {
             <span className="italic text-[#FFD23A]">Jaktees</span>
           </a>
           <nav className="hidden gap-6 text-sm md:flex">
-            <a className="text-[#E8E8EC]/80 hover:text-white" href="#services">{nav[1]}</a>
             <a className="text-[#E8E8EC]/80 hover:text-white" href="#portfolio">{nav[2]}</a>
-            <a className="text-[#E8E8EC]/80 hover:text-white" onClick={scrollToQuote}>{nav[4]}</a>
-            <a className="text-[#E8E8EC]/80 hover:text-white" href="#quote">{nav[7]}</a>
+            <a className="text-[#E8E8EC]/80 hover:text-white" href="#blog">{nav[6]}</a>
           </nav>
           <button onClick={() => setLang((l) => (l === 'en' ? 'id' : 'en'))} className="inline-flex items-center gap-2 rounded-full border border-[#E8E8EC]/15 px-3 py-1 text-xs text-[#E8E8EC]/80 hover:bg-[#17181C]">
             <Globe2 className="h-3.5 w-3.5" /> {lang === 'en' ? 'ID' : 'EN'}
@@ -41,16 +38,16 @@ function App() {
 
       <main id="home">
         <HeroSection lang={lang} onGetQuote={scrollToQuote} />
-        <ServicesSection lang={lang} />
+        <ClientsSection />
         <PortfolioSection lang={lang} />
-        <QuoteContactSection lang={lang} ref={quoteRef} />
+        <BlogSection />
       </main>
 
       <footer className="border-t border-[#E8E8EC]/10 bg-[#0D0D10] py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-sm text-[#E8E8EC]/60 md:flex-row md:px-10">
           <div>© {new Date().getFullYear()} Jaktees — Jakarta T-Shirt Co.</div>
           <div className="flex gap-3">
-            <span>High contrast • Lazy-loaded sections • SEO-ready</span>
+            <span>Artistic hero • Interactive portfolio • Blog feed</span>
           </div>
         </div>
       </footer>
